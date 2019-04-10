@@ -21,8 +21,9 @@ class NHC2Entity(ABC):
         self._callback_mutex = threading.RLock()
         self._on_change = None
         self._after_update_callback = None
+        self._callback_container = None
 
-    def update_dev(self, dev, callbackContainer=None):
+    def update_dev(self, dev, callback_container=None):
         has_changed = False
         if self._uuid == dev['Uuid']:
             if 'Name' in dev and self._name != dev['Name']:
@@ -40,10 +41,10 @@ class NHC2Entity(ABC):
             if 'Type' in dev and self._type != dev['Type']:
                 self._type = dev['Type']
                 has_changed = True
-            if callbackContainer:
-                self._callbackContainer = callbackContainer
-                if 'callbackHolder' in self._callbackContainer:
-                    self._callbackContainer['callbackHolder'] = self._update
+            if callback_container:
+                self._callback_container = callback_container
+                if 'callbackHolder' in self._callback_container:
+                    self._callback_container['callbackHolder'] = self._update
                     has_changed = True
         return has_changed
 
