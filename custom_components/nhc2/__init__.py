@@ -12,6 +12,8 @@ from .config_flow import Nhc2FlowHandler  # noqa  pylint_disable=unused-import
 from .const import DOMAIN, KEY_GATEWAY, CONF_SWITCHES_AS_LIGHTS
 from .helpers import extract_versions
 
+REQUIREMENTS = ['nhc2-coco==1.4.1']
+
 _LOGGER = logging.getLogger(__name__)
 
 DOMAIN = DOMAIN
@@ -67,7 +69,7 @@ FORWARD_PLATFORMS = (
 
 async def async_setup_entry(hass, entry):
     """Create a NHC2 gateway."""
-    from .coco import CoCo
+    from nhc2_coco import CoCo
     coco = CoCo(
         address=entry.data[CONF_HOST],
         username=entry.data[CONF_USERNAME],
