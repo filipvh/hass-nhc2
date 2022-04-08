@@ -2,7 +2,7 @@
 import logging
 from typing import Any
 
-from homeassistant.components.fan import SPEED_HIGH, SPEED_LOW, SPEED_MEDIUM, FanEntity, SUPPORT_SET_SPEED
+from homeassistant.components.fan import FanEntity, SUPPORT_SET_SPEED
 from .coco import CoCo
 from .coco_device_class import CoCoDeviceClass
 from .coco_fan import CoCoFan
@@ -16,6 +16,9 @@ KEY_GATEWAY = KEY_GATEWAY
 KEY_ENTITY = 'nhc2_fans'
 
 SPEED_BOOST = 'boost'
+SPEED_HIGH = 100
+SPEED_LOW = 10
+SPEED_MEDIUM = 50
 
 _LOGGER = logging.getLogger(__name__)
 
